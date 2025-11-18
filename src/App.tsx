@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useState, type JSX } from "react";
 
 import Container from "./components/container";
 import Tile from "./components/tile";
 
-import { type Book, BOOKSHELF_MOCKUP } from "./mockups/bookshelf";
+import LABELS from "./labels";
+
+import { BOOKSHELF_MOCKUP, type Book } from "./mockups/bookshelf";
 
 import "./App.scss";
 
-function App() {
+/**
+ * @name App
+ * @description The main application component.
+ * @returns {JSX.Element}
+ */
+function App(): JSX.Element {
   const [books, setBooks] = useState<Book[]>(BOOKSHELF_MOCKUP);
 
   const bookTiles = books.map((book) => (
@@ -33,15 +40,15 @@ function App() {
   const newBookButton = (
     <button
       onClick={handleOnNewBookClick}
-      aria-label="Add a new book to the bookshelf"
+      aria-label={LABELS.ADD_NEW_BOOK_EXPLANATION}
     >
-      New Book
+      {LABELS.NEW_BOOK}
     </button>
   );
 
   return (
     <div className="app">
-      <Container heading="Bookshelf" actions={[newBookButton]}>
+      <Container heading={LABELS.BOOKSHELF} actions={[newBookButton]}>
         {bookTiles}
       </Container>
     </div>

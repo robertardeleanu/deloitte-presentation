@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, type JSX } from "react";
 
 import Toggle from "../toggle";
+
+import LABELS from "../../labels";
 
 import "./styles.scss";
 
@@ -12,10 +14,20 @@ type Props = {
 
 const PLACEHOLDER_IMAGE_URL = "https://placehold.co/400";
 
-const Tile = ({ title, description, imageUrl }: Props) => {
-
-  const [imgSrc, setImgSrc] = useState<string | undefined>(imageUrl || PLACEHOLDER_IMAGE_URL);
-  const [isDescriptionVisible, setIsDescriptionVisible] = useState<boolean>(true);
+/**
+ * @name Tile
+ * @description A tile component for the application to render the title, description, and image.
+ * @param title - The title of the tile.
+ * @param description - The description of the tile.
+ * @param imageUrl - optional - The image url of the tile.
+ * @returns {JSX.Element}
+ */
+const Tile = ({ title, description, imageUrl }: Props): JSX.Element => {
+  const [imgSrc, setImgSrc] = useState<string | undefined>(
+    imageUrl || PLACEHOLDER_IMAGE_URL
+  );
+  const [isDescriptionVisible, setIsDescriptionVisible] =
+    useState<boolean>(true);
 
   const handleImageError = () => {
     setImgSrc(PLACEHOLDER_IMAGE_URL);
@@ -41,7 +53,11 @@ const Tile = ({ title, description, imageUrl }: Props) => {
         </div>
       </div>
       <div className="tile-image">
-        <img src={imgSrc} alt={`Book cover for ${title}`}  onError={handleImageError} />
+        <img
+          src={imgSrc}
+          alt={`${LABELS.BOOK_COVER_FOR} ${title}`}
+          onError={handleImageError}
+        />
       </div>
     </div>
   );

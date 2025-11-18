@@ -41,12 +41,11 @@
 
             &.visible {
                 opacity: 1;
-                max-height: 200px;
             }
 
             p {
                 padding: 0 0.5em;
-                height: 140px;
+                height: 160px;
                 overflow: auto;
 
                 &::-webkit-scrollbar {
@@ -68,7 +67,6 @@
     .tile-image {
         padding: 1em;
         width: 30%;
-        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
