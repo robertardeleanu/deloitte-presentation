@@ -1,0 +1,84 @@
+.tile {
+    border: 5px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+
+    .tile-content {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+
+        .tile-title {
+            display: flex;
+            flex-direction: row;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1em;
+            width: 100%;
+
+            h2 {
+                width: 80%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                margin: 0;
+            }
+        }
+
+        .tile-description {
+            padding: 0 1em;
+            max-height: 200px;
+            overflow: hidden;
+            transition: opacity 0.3s ease-out, max-height 0.3s ease-out, padding 0.3s ease-out;
+
+            &.hidden {
+                opacity: 0;
+                max-height: 0;
+                padding: 0 1em;
+            }
+
+            &.visible {
+                opacity: 1;
+                max-height: 200px;
+            }
+
+            p {
+                padding: 0 0.5em;
+                height: 140px;
+                overflow: auto;
+
+                &::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #888;
+                    border-radius: 4px;
+
+                    &:hover {
+                        background: #555;
+                    }
+                }
+            }
+        }
+    }
+
+    .tile-image {
+        padding: 1em;
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    }
+}
